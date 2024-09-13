@@ -1,0 +1,232 @@
+.gloria-hallelujah-regular {
+  font-family: "Gloria Hallelujah", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  font-family: "Gloria Hallelujah";
+  background-color: #acbea3;
+}
+
+h1 {
+  text-align: center;
+}
+
+.game-area {
+  box-sizing: border-box;
+  position: absolute;
+  width: 550px;
+  height: 700px;
+  left: calc(50% - 550px / 2 - 0.5px);
+  top: calc(50% - 700px / 2 + 0.5px);
+  background: #4a4063;
+  border: 5px solid #000000;
+  border-radius: 50px;
+}
+
+.check {
+  font-family: "Gloria Hallelujah";
+  position: absolute;
+  left: 445px;
+  top: 625px;
+  width: 90px;
+  background-color: #998fc7;
+  border: 3px solid #000000;
+  border-radius: 10px;
+}
+
+.guesses {
+  box-sizing: border-box;
+  display: grid;
+  width: auto;
+  height: auto;
+  position: relative;
+  left: 20px;
+}
+.turn1 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 10px;
+}
+.turn2 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 20px;
+}
+.turn3 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 30px;
+}
+.turn4 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 40px;
+}
+.turn5 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 50px;
+}
+.turn6 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 60px;
+}
+.turn7 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 70px;
+}
+.turn8 {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  position: relative;
+  top: 80px;
+}
+.colour1,
+.colour2,
+.colour3,
+.colour4 {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #998fc7;
+  border: 3px solid black;
+}
+.hints {
+  box-sizing: border-box;
+  display: grid;
+  position: relative;
+  left: 340px;
+  top: -503px;
+}
+.first-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 0px;
+}
+.second-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 40px;
+}
+.third-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 80px;
+}
+.fourth-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 120px;
+}
+.fifth-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 160px;
+}
+.sixth-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 200px;
+}
+.seventh-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 240px;
+}
+.eighth-hint {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  position: relative;
+  top: 280px;
+}
+.hint1,
+.hint2,
+.hint3,
+.hint4 {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #998fc7;
+  border: 3px solid black;
+}
+
+.colour-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  width: 80%;
+  height: 70px;
+  top: 610px;
+  left: 5px;
+  background-color: #4a4063;
+  border: 5px solid black;
+  border-radius: 50px;
+}
+.item {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #4a4063;
+}
+.green {
+  background-color: #acbea3;
+  border: 3px solid black;
+}
+.white {
+  background-color: white;
+  border: 3px solid black;
+}
+.orange {
+  background-color: #ff9b71;
+  border: 3px solid black;
+}
+.blue {
+  background-color: #3fadd7;
+  border: 3px solid black;
+}
+.pink {
+  background-color: #ff00c3;
+  border: 3px solid black;
+}
+.brown {
+  background-color: #8d6e63;
+  border: 3px solid black;
+}
+.red {
+  background-color: #ff5e5e;
+  border: 3px solid black;
+}
+.yellow {
+  background-color: #fdfd96;
+  border: 3px solid black;
+}
+.black {
+  background-color: #000000;
+  border: 3px solid black;
+}

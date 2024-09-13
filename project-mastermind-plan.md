@@ -36,6 +36,7 @@
 
    - Possible colours.
    - Amount of turns.
+   - Length of secret code.
 
 4. Generate a random colour code.
 
