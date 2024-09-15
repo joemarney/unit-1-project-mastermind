@@ -14,7 +14,7 @@ body {
   background-color: #acbea3;
 }
 
-h1 {
+.message {
   text-align: center;
 }
 
@@ -28,8 +28,26 @@ h1 {
   background: #4a4063;
   border: 5px solid #000000;
   border-radius: 50px;
+  cursor: pointer;
 }
-
+.secret-code {
+  /* visibility: hidden; */
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+.secret1,
+.secret2,
+.secret3,
+.secret4 {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #998fc7;
+  border: 3px solid black;
+}
 .check {
   font-family: "Gloria Hallelujah";
   position: absolute;
@@ -100,19 +118,47 @@ h1 {
 .colour1,
 .colour2,
 .colour3,
-.colour4 {
+.colour4,
+.colour5,
+.colour6,
+.colour7,
+.colour8,
+.colour9,
+.colour10,
+.colour11,
+.colour12,
+.colour13,
+.colour14,
+.colour15,
+.colour16,
+.colour17,
+.colour18,
+.colour19,
+.colour20,
+.colour21,
+.colour22,
+.colour23,
+.colour24,
+.colour25,
+.colour26,
+.colour27,
+.colour28,
+.colour29,
+.colour30,
+.colour31,
+.colour32 {
   height: 60px;
   width: 60px;
   border-radius: 50%;
   background-color: #998fc7;
-  border: 3px solid black;
+  border: 2px solid black;
 }
-.hints {
+.feedback {
   box-sizing: border-box;
   display: grid;
   position: relative;
   left: 340px;
-  top: -503px;
+  top: -490px;
 }
 .first-hint {
   display: grid;
@@ -165,12 +211,40 @@ h1 {
 .hint1,
 .hint2,
 .hint3,
-.hint4 {
+.hint4,
+.hint5,
+.hint6,
+.hint7,
+.hint8,
+.hint9,
+.hint10,
+.hint11,
+.hint12,
+.hint13,
+.hint14,
+.hint15,
+.hint16,
+.hint17,
+.hint18,
+.hint19,
+.hint20,
+.hint21,
+.hint22,
+.hint23,
+.hint24,
+.hint25,
+.hint26,
+.hint27,
+.hint28,
+.hint29,
+.hint30,
+.hint31,
+.hint32 {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   background-color: #998fc7;
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 .colour-selector {
@@ -188,45 +262,49 @@ h1 {
   border: 5px solid black;
   border-radius: 50px;
 }
-.item {
+button {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   background-color: #4a4063;
+  cursor: pointer;
 }
-.green {
+button:hover {
+  transform: scale(1.1);
+}
+#green {
   background-color: #acbea3;
   border: 3px solid black;
 }
-.white {
+#white {
   background-color: white;
   border: 3px solid black;
 }
-.orange {
+#orange {
   background-color: #ff9b71;
   border: 3px solid black;
 }
-.blue {
+#blue {
   background-color: #3fadd7;
   border: 3px solid black;
 }
-.pink {
+#pink {
   background-color: #ff00c3;
   border: 3px solid black;
 }
-.brown {
+#brown {
   background-color: #8d6e63;
   border: 3px solid black;
 }
-.red {
+#red {
   background-color: #ff5e5e;
   border: 3px solid black;
 }
-.yellow {
+#yellow {
   background-color: #fdfd96;
   border: 3px solid black;
 }
-.black {
-  background-color: #000000;
+#black {
+  background-color: #32322c;
   border: 3px solid black;
 }
