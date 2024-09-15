@@ -17,8 +17,11 @@ let winArr = [];
 /*----- Cached Element References  -----*/
 const colourSelector = document.querySelectorAll(".button");
 const checkBtn = document.querySelector(".check");
-const secretCode = document.querySelector(".secret-code");
 const resultMsg = document.querySelector(".message");
+
+const secretCode = document.querySelectorAll(
+  ".secret1, .secret2, .secret3, .secret4"
+);
 
 const [...turn1] = document.querySelectorAll(
   ".colour1, .colour2, .colour3, .colour4"
@@ -82,16 +85,9 @@ const feedback = [
   eighthHint,
 ];
 /*-------------- Functions -------------*/
-
-/*----------- Event Listeners ----------*/
-[...turn1].forEach((guess) => {
-  guess.addEventListener("click", function () {
-    selectedDiv = guess;
-    turn1.forEach((d) => (d.style.outline = ""));
-    guess.style.outline = "2px solid black";
-  });
-});
-
+const init = function () {
+  getSecretCode();
+};
 const handleClick = function (event) {
   if (selectedDiv) {
     const selectedColor = event.target.getAttribute("data-color");
@@ -101,6 +97,30 @@ const handleClick = function (event) {
   }
 };
 
+[...turn1].forEach((guess) => {
+  guess.addEventListener("click", function () {
+    selectedDiv = guess;
+    turn1.forEach((d) => (d.style.outline = ""));
+    guess.style.outline = "2px solid black";
+  });
+});
+
+const getSecretCode = function () {
+  mystery.length = 0;
+  while (mystery.length < 4) {
+    let random = colours[Math.floor(Math.random() * colours.length)];
+    if (!mystery.includes(random)) {
+      mystery.push(random);
+      console.log(mystery);
+    }
+  }
+  [...secretCode].forEach((element, index) => {
+    element.style.backgroundColor = `#${mystery[index]}`;
+  });
+};
+init();
+
+/*----------- Event Listeners ----------*/
 colourSelector.forEach((button) => {
   button.addEventListener("click", handleClick);
 });
