@@ -208,10 +208,10 @@ body {
   position: relative;
   top: 280px;
 }
-.hint1,
-.hint2,
-.hint3,
-.hint4,
+#hint1,
+#hint2,
+#hint3,
+#hint4,
 .hint5,
 .hint6,
 .hint7,
