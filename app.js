@@ -1,17 +1,18 @@
 /*-------------- Constants -------------*/
 const colours = [
-  "acbea3",
-  "ffffff",
-  "ff9b71",
-  "3fadd7",
-  "ff00c3",
-  "8d6e63",
-  "ff5e5e",
-  "fdfd96",
-  "32322c",
+  "rgb(0, 128, 0)",
+  "rgb(255, 255, 255)",
+  "rgb(255, 165, 0)",
+  "rgb(0, 0, 255)",
+  "rgb(255, 192, 203)",
+  "rgb(75, 0, 130)",
+  "rgb(255, 0, 0)",
+  "rgb(255, 255, 0)",
+  "rgb(169, 169, 169)",
 ];
 /*---------- Variables (state) ---------*/
 let mystery = [];
+let result = [];
 
 /*----- Cached Element References  -----*/
 const colourSelector = document.querySelectorAll(".button");
@@ -21,7 +22,6 @@ const resultMsg = document.querySelector(".message");
 const secretCode = document.querySelectorAll(
   ".secret1, .secret2, .secret3, .secret4"
 );
-
 const turn1 = document.querySelectorAll(
   ".colour1, .colour2, .colour3, .colour4"
 );
@@ -83,11 +83,13 @@ const feedback = [
 const init = function () {
   getSecretCode();
 };
-const handleClick = function (event) {
+const changeColour = function (event) {
   if (selectedDiv) {
-    const selectedColor = event.target.getAttribute("data-color");
-    if (selectedColor) {
-      selectedDiv.style.backgroundColor = `#${selectedColor}`;
+    const selectedColour = window.getComputedStyle(
+      event.target
+    ).backgroundColor;
+    if (selectedColour) {
+      selectedDiv.style.backgroundColor = selectedColour;
     }
   }
 };
@@ -106,55 +108,56 @@ const getSecretCode = function () {
     let random = colours[Math.floor(Math.random() * colours.length)];
     if (!mystery.includes(random)) {
       mystery.push(random);
-      // console.log(mystery);
     }
   }
   [...secretCode].forEach((element, index) => {
-    element.style.backgroundColor = `#${mystery[index]}`;
+    element.style.backgroundColor = mystery[index];
   });
 };
 
 const giveFeedback = function () {
-  let winArr = new Array(turn1.length).fill(""); //creates an array with the same length as turn1
-  const checkMystery = [...mystery]; //creates a duplicate array so the real one doesnt get changed
-  turn1.forEach((element, index) => {
-    //loops through turn 1
-    const rgb = element.style.backgroundColor; //javascript outputted as RGB so needed a converter
-    const colour = rgbToHex(rgb);
-    if (checkMystery[index] === colour) {
-      //if duplicate mystery array matches colours in turn1
-      winArr[index] = "correct"; //push 'correct' into array
-    } else if (checkMystery[index] !== colour) {
-      winArr[index] = "incorrect"; //change '' into 'incorrect'
+  result = [];
+  let matched = Array(mystery.length).fill(false);
+  let guessColours = [...turn1].map((el) => el.style.backgroundColor);
+  for (let i = 0; i < turn1.length; i++) {
+    if (guessColours[i] === mystery[i]) {
+      result[i] = "correct";
+      matched[i] = true;
     } else {
-      winArr[index] = "nothing"; //why do u not work??????
+      result[i] = "blank";
     }
-    console.log(winArr);
-  });
-  winArr.forEach((result, index) => {
-    if (result === "correct") {
-      firstHint[index].style.backgroundColor = "#ACBEA3";
-    } else if (result === "incorrect") {
-      firstHint[index].style.backgroundColor = "#FF9B71";
-    } else if (result === "nothing") {
-      firstHint[index].style.backgroundColor = "";
+  }
+  for (let i = 0; i < guessColours.length; i++) {
+    if (result[i] === "correct") continue;
+
+    for (let j = 0; j < mystery.length; j++) {
+      if (!matched[j] && turn1[i] === mystery[j]) {
+        result[i] = "incorrect";
+        matched[j] = true;
+        break;
+      }
     }
-  });
+  }
+  console.log(result);
+  console.log(matched);
+  console.log(mystery);
+  console.log(turn1);
+  console.log(firstHint);
 };
 
-const rgbToHex = function (rgb) {
-  const result = rgb.match(/\d+/g);
-  if (result) {
-    const r = parseInt(result[0]).toString(16).padStart(2, "0");
-    const g = parseInt(result[1]).toString(16).padStart(2, "0");
-    const b = parseInt(result[2]).toString(16).padStart(2, "0");
-    return r + g + b;
+result.forEach((result, index) => {
+  if (result[index] === "correct") {
+    firstHint[index].style.backgroundColor = "rgb(0, 128, 0)";
+  } else if (result === "incorrect") {
+    firstHint[index].style.backgroundColor = "rgb(255, 165, 0)";
+  } else if (result === "blank") {
+    firstHint[index].style.backgroundColor = "";
   }
-};
+});
 init();
 
 /*----------- Event Listeners ----------*/
 colourSelector.forEach((button) => {
-  button.addEventListener("click", handleClick);
+  button.addEventListener("click", changeColour);
 });
 checkBtn.addEventListener("click", giveFeedback);
