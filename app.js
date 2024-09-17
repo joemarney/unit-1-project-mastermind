@@ -12,95 +12,64 @@ const colours = [
 ];
 /*---------- Variables (state) ---------*/
 let mystery = [];
-let result = [];
+let currentTurn = 0;
 
 /*----- Cached Element References  -----*/
 const colourSelector = document.querySelectorAll(".button");
 const checkBtn = document.querySelector(".check");
 const resultMsg = document.querySelector(".message");
+const hamMenu = document.querySelector(".ham-menu");
+const offScreenMenu = document.querySelector(".off-screen-menu");
 
 const secretCode = document.querySelectorAll(
-  ".secret1, .secret2, .secret3, .secret4"
+  "#secret1, #secret2, #secret3, #secret4"
 );
-const turn1 = document.querySelectorAll(
-  ".colour1, .colour2, .colour3, .colour4"
-);
-// const turn2 = document.querySelectorAll(
-//   ".colour5, .colour6, .colour7, .colour8"
-// );
-// const turn3 = document.querySelectorAll(
-//   ".colour9, .colour10, .colour11, .colour12"
-// );
-// const turn4 = document.querySelectorAll(
-//   ".colour13, .colour14, .colour15, .colour16"
-// );
-// const turn5 = document.querySelectorAll(
-//   ".colour17, .colour18, .colour19, .colour20"
-// );
-// const turn6 = document.querySelectorAll(
-//   ".colour21, .colour22, .colour23, .colour24"
-// );
-// const turn7 = document.querySelectorAll(
-//   ".colour25, .colour26, .colour27, .colour28"
-// );
-// const turn8 = document.querySelectorAll(
-//   ".colour29, .colour30, .colour31, .colour32"
-// );
+const turns = [
+  document.querySelectorAll(".first"),
+  document.querySelectorAll(".second"),
+  document.querySelectorAll(".third"),
+  document.querySelectorAll(".fourth"),
+  document.querySelectorAll(".fifth"),
+  document.querySelectorAll(".sixth"),
+  document.querySelectorAll(".seventh"),
+  document.querySelectorAll(".eighth"),
+];
 
-const firstHint = document.getElementsByClassName("hint");
-// const secondHint = document.querySelectorAll(".hint5, .hint6, .hint7, .hint8");
-// const thirdHint = document.querySelectorAll(
-//   ".hint9, .hint10, .hint11, .hint12"
-// );
-// const fourthHint = document.querySelectorAll(
-//   ".hint13, .hint14, .hint15, .hint16"
-// );
-// const fifthHint = document.querySelectorAll(
-//   ".hint17, .hint18, .hint19, .hint20"
-// );
-// const sixthHint = document.querySelectorAll(
-//   ".hint21, .hint22, .hint23, .hint24"
-// );
-// const seventhHint = document.querySelectorAll(
-//   ".hint25, .hint26, .hint27, .hint28"
-// );
-// const eighthHint = document.querySelectorAll(
-//   ".hint29, .hint30, .hint31, .hint32"
-// );
-
-// const guesses = [turn1, turn2, turn3, turn4, turn5, turn6, turn7, turn8];
-// const feedback = [
-//   firstHint,
-//   secondHint,
-//   thirdHint,
-//   fourthHint,
-//   fifthHint,
-//   sixthHint,
-//   seventhHint,
-//   eighthHint,
-// ];
+const feedback = [
+  document.querySelectorAll(".hint1"),
+  document.querySelectorAll(".hint2"),
+  document.querySelectorAll(".hint3"),
+  document.querySelectorAll(".hint4"),
+  document.querySelectorAll(".hint5"),
+  document.querySelectorAll(".hint6"),
+  document.querySelectorAll(".hint7"),
+  document.querySelectorAll(".hint8"),
+];
 /*-------------- Functions -------------*/
 const init = function () {
+  currentTurn = 0;
   getSecretCode();
-};
-const changeColour = function (event) {
-  if (selectedDiv) {
-    const selectedColour = window.getComputedStyle(
-      event.target
-    ).backgroundColor;
-    if (selectedColour) {
-      selectedDiv.style.backgroundColor = selectedColour;
-    }
-  }
+  playerTurns(currentTurn);
+  resultMsg.textContent = "MASTERMIND";
+  checkBtn.textContent = "CHECK";
+  checkBtn.removeEventListener("click", init);
+  checkBtn.addEventListener("click", giveFeedback);
+  resetColours();
 };
 
-turn1.forEach((guess) => {
-  guess.addEventListener("click", function () {
-    selectedDiv = guess;
-    turn1.forEach((d) => (d.style.outline = ""));
-    guess.style.outline = "2px solid white";
+const resetColours = function () {
+  turns.forEach((turn) => {
+    turn.forEach((guess) => {
+      guess.style.backgroundColor = "";
+      guess.style.outline = "";
+    });
   });
-});
+  feedback.forEach((hints) => {
+    hints.forEach((hint) => {
+      hint.style.backgroundColor = "";
+    });
+  });
+};
 
 const getSecretCode = function () {
   mystery.length = 0;
@@ -115,54 +84,110 @@ const getSecretCode = function () {
   });
 };
 
+const changeColour = function (event) {
+  if (selectedDiv) {
+    const selectedColour = window.getComputedStyle(
+      event.target
+    ).backgroundColor;
+    if (selectedColour) {
+      selectedDiv.style.backgroundColor = selectedColour;
+    }
+  }
+};
+const playerTurns = function (turnIndex) {
+  turns[turnIndex].forEach((guess) => {
+    guess.addEventListener("click", function () {
+      selectedDiv = guess;
+      turns[turnIndex].forEach((d) => (d.style.outline = ""));
+      guess.style.outline = "2px solid white";
+    });
+  });
+};
+
+const disablePlayerTurn = function (turnIndex) {
+  turns[turnIndex].forEach((el) => {
+    el.style.outline = "";
+  });
+};
+
 const giveFeedback = function () {
   let result = [];
   let matched = Array(mystery.length).fill(false);
-  let guessColors = [...turn1].map((el) => el.style.backgroundColor);
+  let guessColours = [...turns[currentTurn]].map(
+    (el) => el.style.backgroundColor
+  );
+  let correctGuesses = 0;
 
-  for (let i = 0; i < turn1.length; i++) {
-    if (guessColors[i] === mystery[i]) {
+  for (let i = 0; i < turns[currentTurn].length; i++) {
+    if (guessColours[i] === mystery[i]) {
       result[i] = "correct";
       matched[i] = true;
+      correctGuesses++;
     } else {
       result[i] = "blank";
     }
   }
-  for (let i = 0; i < turn1.length; i++) {
+  for (let i = 0; i < turns[currentTurn].length; i++) {
     if (result[i] === "correct") continue;
     for (let j = 0; j < mystery.length; j++) {
-      if (!matched[j] && guessColors[i] === mystery[j]) {
+      if (!matched[j] && guessColours[i] === mystery[j]) {
         result[i] = "incorrect";
         matched[j] = true;
         break;
       }
     }
   }
-  result.forEach((feedback, index) => {
-    if (feedback === "correct") {
-      firstHint[index].style.backgroundColor = "green";
-    } else if (feedback === "incorrect") {
-      firstHint[index].style.backgroundColor = "orange";
-    } else if (feedback === "blank") {
-      firstHint[index].style.backgroundColor = "";
+  result.forEach((feedbackResult, index) => {
+    if (feedbackResult === "correct") {
+      feedback[currentTurn][index].style.backgroundColor = "green";
+    } else if (feedbackResult === "incorrect") {
+      feedback[currentTurn][index].style.backgroundColor = "orange";
+    } else if (feedbackResult === "blank") {
+      feedback[currentTurn][index].style.backgroundColor = "";
     }
   });
 
-  console.log("Guess Colors: ", guessColors);
+  if (correctGuesses === mystery.length) {
+    winner();
+  } else if (currentTurn < turns.length - 1) {
+    disablePlayerTurn(currentTurn);
+    currentTurn++;
+    playerTurns(currentTurn);
+    turns.forEach((turn) => {
+      turn.forEach((guess) => {
+        guess.style.outline = "";
+      });
+    });
+  } else {
+    loser();
+  }
+
+  console.log("Guess Colors: ", guessColours);
   console.log("Mystery Colors: ", mystery);
   console.log("Result: ", result);
 };
 
-const checkWin = function () {
+const winner = function () {
   resultMsg.textContent = "GOOD JOB, YOU CRACKED THE CODE.";
   checkBtn.textContent = "RESET";
+  checkBtn.removeEventListener("click", giveFeedback);
+  checkBtn.addEventListener("click", init);
 };
 
-// checkWin();
-init();
-
+const loser = function () {
+  resultMsg.textContent = "BETTER LUCK NEXT TIME.";
+  checkBtn.textContent = "RETRY";
+  checkBtn.removeEventListener("click", giveFeedback);
+  checkBtn.addEventListener("click", init);
+};
 /*----------- Event Listeners ----------*/
 colourSelector.forEach((button) => {
   button.addEventListener("click", changeColour);
 });
 checkBtn.addEventListener("click", giveFeedback);
+hamMenu.addEventListener("click", () => {
+  hamMenu.classList.toggle("active");
+  offScreenMenu.classList.toggle("active");
+});
+
+init();

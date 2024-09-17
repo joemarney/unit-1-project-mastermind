@@ -13,6 +13,79 @@ body {
   font-family: "Gloria Hallelujah";
   background-color: #acbea3;
 }
+.off-screen-menu {
+  background-color: #4a4063;
+  height: 100vh;
+  width: 100%;
+  max-width: 200px;
+  position: fixed;
+  top: 0;
+  right: -200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  transition: 0.3s ease;
+}
+.off-screen-menu.active {
+  right: 0;
+}
+nav {
+  padding: 5px;
+  display: flex;
+  background-color: #4a4063;
+}
+.ham-menu {
+  height: 30px;
+  width: 30px;
+  margin-left: auto;
+  position: relative;
+  cursor: pointer;
+}
+.ham-menu span {
+  height: 5px;
+  width: 100%;
+  background-color: #998fc7;
+  border-radius: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s ease;
+}
+.ham-menu span:nth-child(1) {
+  top: 25%;
+}
+.ham-menu span:nth-child(3) {
+  top: 75%;
+}
+.ham-menu.active span:nth-child(1) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.ham-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.ham-menu.active span:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.how-to {
+  background-color: #998fc7;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-family: "Gloria Hallelujah";
+  cursor: pointer;
+}
+.dark {
+  background-color: #998fc7;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-family: "Gloria Hallelujah";
+  cursor: pointer;
+}
 
 .message {
   text-align: center;
@@ -24,7 +97,7 @@ body {
   width: 550px;
   height: 700px;
   left: calc(50% - 550px / 2 - 0.5px);
-  top: calc(50% - 700px / 2 + 0.5px);
+  top: calc(50% - 600px / 2 + 0.5px);
   background: #4a4063;
   border: 5px solid #000000;
   border-radius: 50px;
@@ -37,10 +110,10 @@ body {
   justify-content: center;
   gap: 10px;
 }
-.secret1,
-.secret2,
-.secret3,
-.secret4 {
+#secret1,
+#secret2,
+#secret3,
+#secret4 {
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -115,38 +188,38 @@ body {
   position: relative;
   top: 80px;
 }
-.colour1,
-.colour2,
-.colour3,
-.colour4,
-.colour5,
-.colour6,
-.colour7,
-.colour8,
-.colour9,
-.colour10,
-.colour11,
-.colour12,
-.colour13,
-.colour14,
-.colour15,
-.colour16,
-.colour17,
-.colour18,
-.colour19,
-.colour20,
-.colour21,
-.colour22,
-.colour23,
-.colour24,
-.colour25,
-.colour26,
-.colour27,
-.colour28,
-.colour29,
-.colour30,
-.colour31,
-.colour32 {
+#guess1,
+#guess2,
+#guess3,
+#guess4,
+#guess5,
+#guess6,
+#guess7,
+#guess8,
+#guess9,
+#guess10,
+#guess11,
+#guess12,
+#guess13,
+#guess14,
+#guess15,
+#guess16,
+#guess17,
+#guess18,
+#guess19,
+#guess20,
+#guess21,
+#guess22,
+#guess23,
+#guess24,
+#guess25,
+#guess26,
+#guess27,
+#guess28,
+#guess29,
+#guess30,
+#guess31,
+#guess32 {
   height: 60px;
   width: 60px;
   border-radius: 50%;
@@ -212,34 +285,34 @@ body {
 #hint2,
 #hint3,
 #hint4,
-.hint5,
-.hint6,
-.hint7,
-.hint8,
-.hint9,
-.hint10,
-.hint11,
-.hint12,
-.hint13,
-.hint14,
-.hint15,
-.hint16,
-.hint17,
-.hint18,
-.hint19,
-.hint20,
-.hint21,
-.hint22,
-.hint23,
-.hint24,
-.hint25,
-.hint26,
-.hint27,
-.hint28,
-.hint29,
-.hint30,
-.hint31,
-.hint32 {
+#hint5,
+#hint6,
+#hint7,
+#hint8,
+#hint9,
+#hint10,
+#hint11,
+#hint12,
+#hint13,
+#hint14,
+#hint15,
+#hint16,
+#hint17,
+#hint18,
+#hint19,
+#hint20,
+#hint21,
+#hint22,
+#hint23,
+#hint24,
+#hint25,
+#hint26,
+#hint27,
+#hint28,
+#hint29,
+#hint30,
+#hint31,
+#hint32 {
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -262,14 +335,14 @@ body {
   border: 5px solid black;
   border-radius: 50px;
 }
-button {
+.colour {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   background-color: #4a4063;
   cursor: pointer;
 }
-button:hover {
+.colour :hover {
   transform: scale(1.1);
 }
 #green {

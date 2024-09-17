@@ -13,125 +13,140 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 class="message">Mastermind</h1>
+    <div class="off-screen-menu">
+      <ul>
+        <button class="how-to">HOW TO PLAY</button>
+        <button class="dark">DARK MODE</button>
+      </ul>
+    </div>
+
+    <nav>
+      <div class="ham-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <h1 class="message">MASTERMIND</h1>
     <div class="secret-code">
-      <div class="secret1"></div>
-      <div class="secret2"></div>
-      <div class="secret3"></div>
-      <div class="secret4"></div>
+      <div id="secret1"></div>
+      <div id="secret2"></div>
+      <div id="secret3"></div>
+      <div id="secret4"></div>
     </div>
     <div class="game-area">
       <button class="check">CHECK</button>
       <div class="guesses">
         <div class="turn1">
-          <div class="colour1"></div>
-          <div class="colour2"></div>
-          <div class="colour3"></div>
-          <div class="colour4"></div>
+          <div class="first" id="guess1"></div>
+          <div class="first" id="guess2"></div>
+          <div class="first" id="guess3"></div>
+          <div class="first" id="guess4"></div>
         </div>
         <div class="turn2">
-          <div class="colour5"></div>
-          <div class="colour6"></div>
-          <div class="colour7"></div>
-          <div class="colour8"></div>
+          <div class="second" id="guess5"></div>
+          <div class="second" id="guess6"></div>
+          <div class="second" id="guess7"></div>
+          <div class="second" id="guess8"></div>
         </div>
         <div class="turn3">
-          <div class="colour9"></div>
-          <div class="colour10"></div>
-          <div class="colour11"></div>
-          <div class="colour12"></div>
+          <div class="third" id="guess9"></div>
+          <div class="third" id="guess10"></div>
+          <div class="third" id="guess11"></div>
+          <div class="third" id="guess12"></div>
         </div>
         <div class="turn4">
-          <div class="colour13"></div>
-          <div class="colour14"></div>
-          <div class="colour15"></div>
-          <div class="colour16"></div>
+          <div class="fourth" id="guess13"></div>
+          <div class="fourth" id="guess14"></div>
+          <div class="fourth" id="guess15"></div>
+          <div class="fourth" id="guess16"></div>
         </div>
         <div class="turn5">
-          <div class="colour17"></div>
-          <div class="colour18"></div>
-          <div class="colour19"></div>
-          <div class="colour20"></div>
+          <div class="fifth" id="guess17"></div>
+          <div class="fifth" id="guess18"></div>
+          <div class="fifth" id="guess19"></div>
+          <div class="fifth" id="guess20"></div>
         </div>
         <div class="turn6">
-          <div class="colour21"></div>
-          <div class="colour22"></div>
-          <div class="colour23"></div>
-          <div class="colour24"></div>
+          <div class="sixth" id="guess21"></div>
+          <div class="sixth" id="guess22"></div>
+          <div class="sixth" id="guess23"></div>
+          <div class="sixth" id="guess24"></div>
         </div>
         <div class="turn7">
-          <div class="colour25"></div>
-          <div class="colour26"></div>
-          <div class="colour27"></div>
-          <div class="colour28"></div>
+          <div class="seventh" id="guess25"></div>
+          <div class="seventh" id="guess26"></div>
+          <div class="seventh" id="guess27"></div>
+          <div class="seventh" id="guess28"></div>
         </div>
         <div class="turn8">
-          <div class="colour29"></div>
-          <div class="colour30"></div>
-          <div class="colour31"></div>
-          <div class="colour32"></div>
+          <div class="eighth" id="guess29"></div>
+          <div class="eighth" id="guess30"></div>
+          <div class="eighth" id="guess31"></div>
+          <div class="eighth" id="guess32"></div>
         </div>
       </div>
       <div class="feedback">
         <div class="first-hint">
-          <div class="hint" id="hint1"></div>
-          <div class="hint" id="hint2"></div>
-          <div class="hint" id="hint3"></div>
-          <div class="hint" id="hint4"></div>
+          <div class="hint1" id="hint1"></div>
+          <div class="hint1" id="hint2"></div>
+          <div class="hint1" id="hint3"></div>
+          <div class="hint1" id="hint4"></div>
         </div>
         <div class="second-hint">
-          <div class="hint5"></div>
-          <div class="hint6"></div>
-          <div class="hint7"></div>
-          <div class="hint8"></div>
+          <div class="hint2" id="hint5"></div>
+          <div class="hint2" id="hint6"></div>
+          <div class="hint2" id="hint7"></div>
+          <div class="hint2" id="hint8"></div>
         </div>
         <div class="third-hint">
-          <div class="hint9"></div>
-          <div class="hint10"></div>
-          <div class="hint11"></div>
-          <div class="hint12"></div>
+          <div class="hint3" id="hint9"></div>
+          <div class="hint3" id="hint10"></div>
+          <div class="hint3" id="hint11"></div>
+          <div class="hint3" id="hint12"></div>
         </div>
         <div class="fourth-hint">
-          <div class="hint13"></div>
-          <div class="hint14"></div>
-          <div class="hint15"></div>
-          <div class="hint16"></div>
+          <div class="hint4" id="hint13"></div>
+          <div class="hint4" id="hint14"></div>
+          <div class="hint4" id="hint15"></div>
+          <div class="hint4" id="hint16"></div>
         </div>
         <div class="fifth-hint">
-          <div class="hint17"></div>
-          <div class="hint18"></div>
-          <div class="hint19"></div>
-          <div class="hint20"></div>
+          <div class="hint5" id="hint17"></div>
+          <div class="hint5" id="hint18"></div>
+          <div class="hint5" id="hint19"></div>
+          <div class="hint5" id="hint20"></div>
         </div>
         <div class="sixth-hint">
-          <div class="hint21"></div>
-          <div class="hint22"></div>
-          <div class="hint23"></div>
-          <div class="hint24"></div>
+          <div class="hint6" id="hint21"></div>
+          <div class="hint6" id="hint22"></div>
+          <div class="hint6" id="hint23"></div>
+          <div class="hint6" id="hint24"></div>
         </div>
         <div class="seventh-hint">
-          <div class="hint25"></div>
-          <div class="hint26"></div>
-          <div class="hint27"></div>
-          <div class="hint28"></div>
+          <div class="hint7" id="hint25"></div>
+          <div class="hint7" id="hint26"></div>
+          <div class="hint7" id="hint27"></div>
+          <div class="hint7" id="hint28"></div>
         </div>
         <div class="eighth-hint">
-          <div class="hint29"></div>
-          <div class="hint30"></div>
-          <div class="hint31"></div>
-          <div class="hint32"></div>
+          <div class="hint8" id="hint29"></div>
+          <div class="hint8" id="hint30"></div>
+          <div class="hint8" id="hint31"></div>
+          <div class="hint8" id="hint32"></div>
         </div>
       </div>
       <div class="colour-selector">
-        <button class="button" id="green"></button>
-        <button class="button" id="white"></button>
-        <button class="button" id="orange"></button>
-        <button class="button" id="blue"></button>
-        <button class="button" id="pink"></button>
-        <button class="button" id="brown"></button>
-        <button class="button" id="red"></button>
-        <button class="button" id="yellow"></button>
-        <button class="button" id="grey"></button>
+        <button class="colour" id="green"></button>
+        <button class="colour" id="white"></button>
+        <button class="colour" id="orange"></button>
+        <button class="colour" id="blue"></button>
+        <button class="colour" id="pink"></button>
+        <button class="colour" id="brown"></button>
+        <button class="colour" id="red"></button>
+        <button class="colour" id="yellow"></button>
+        <button class="colour" id="grey"></button>
       </div>
     </div>
     <script src="app.js" defer></script>
