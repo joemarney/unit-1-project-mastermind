@@ -131,7 +131,7 @@ nav {
   cursor: pointer;
 }
 
-#dark {
+#light {
   background-color: #998fc7;
   border: 3px solid black;
   border-radius: 10px;
@@ -155,7 +155,7 @@ nav {
   border-radius: 50px;
 }
 .secret-code {
-  /* visibility: hidden; */
+  visibility: hidden;
   display: flex;
   width: 100%;
   height: 100%;
