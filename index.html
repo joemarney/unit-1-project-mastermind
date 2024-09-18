@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="mode">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,21 +12,47 @@
     <title>Mastermind</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="background">
     <div class="off-screen-menu">
       <ul>
         <button class="how-to">HOW TO PLAY</button>
-        <button class="dark">DARK MODE</button>
+        <button id="dark" data-theme-toggle>DARK MODE</button>
       </ul>
     </div>
 
-    <nav>
+    <nav class="nav-bar">
       <div class="ham-menu">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </nav>
+
+    <div id="instructionsPage" class="show">
+      <button class="exit">EXIT</button>
+      <div class="instructions">
+        <p>
+          YOUR GOAL IS TO GUESS THE SECRET CODE WITHIN 8 TURNS.
+          <br />
+          FOR EACH TURN, SELECT A COMBO OF COLOURS AND HIT CHECK.
+          <br />
+          IF YOU RUN OUT OF TURNS THE GAME IS OVER.
+          <br />
+          STARTING FROM TOP TO BOTTOM, AT EACH ROW, CLICK IN THE CIRCLES AND
+          PICK A COLOUR.
+        </p>
+        <br />
+        <p>
+          EVERY TIME YOU HIT CHECK YOU WILL GET FEEDBACK ON YOUR GUESS:
+          <br />
+          GREEN MEANS CORRECT COLOUR IN THE CORRECT POSITION.
+          <br />
+          ORANGE MEANS CORRECT COLOUR IN THE INCORRECT POSITION.
+          <br />
+          BLANK MEANS THE COLOUR YOU GUESSED IS NOT IN THE COMBO.
+        </p>
+      </div>
+    </div>
 
     <h1 class="message">MASTERMIND</h1>
     <div class="secret-code">

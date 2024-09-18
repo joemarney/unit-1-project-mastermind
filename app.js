@@ -15,11 +15,18 @@ let mystery = [];
 let currentTurn = 0;
 
 /*----- Cached Element References  -----*/
-const colourSelector = document.querySelectorAll(".button");
+const colourSelector = document.querySelectorAll(".colour");
 const checkBtn = document.querySelector(".check");
 const resultMsg = document.querySelector(".message");
 const hamMenu = document.querySelector(".ham-menu");
 const offScreenMenu = document.querySelector(".off-screen-menu");
+const darkMode = document.querySelector("#dark");
+const instructions = document.querySelector(".how-to");
+const navBar = document.querySelector(".nav-bar");
+const backGround = document.querySelector(".background");
+const exitBtn = document.querySelector(".exit");
+const showInstructions = document.querySelector("#instructionsPage");
+const modeToggle = document.querySelector(".mode");
 
 const secretCode = document.querySelectorAll(
   "#secret1, #secret2, #secret3, #secret4"
@@ -171,14 +178,58 @@ const winner = function () {
   resultMsg.textContent = "GOOD JOB, YOU CRACKED THE CODE.";
   checkBtn.textContent = "RESET";
   checkBtn.removeEventListener("click", giveFeedback);
-  checkBtn.addEventListener("click", init);
+  checkBtn.addEventListener("click", () => {
+    okayReady();
+    init();
+  });
+  youWereMasterful();
 };
 
 const loser = function () {
   resultMsg.textContent = "BETTER LUCK NEXT TIME.";
   checkBtn.textContent = "RETRY";
   checkBtn.removeEventListener("click", giveFeedback);
-  checkBtn.addEventListener("click", init);
+  checkBtn.addEventListener("click", () => {
+    okayReady();
+    init();
+  });
+  iUsedToWin();
+};
+
+const okayReady = function () {
+  const okayReadySoundbite = new Audio("../soundbites/okay_ready.wav");
+  okayReadySoundbite.volume = 0.5;
+  okayReadySoundbite.play();
+};
+
+const ahMastermind = function () {
+  const ahMastermindSoundbite = new Audio("../soundbites/ah_mastermind.wav");
+  ahMastermindSoundbite.volume = 0.5;
+  ahMastermindSoundbite.play();
+};
+const mastermindUgh = function () {
+  const mastermindUghSoundbite = new Audio("../soundbites/mastermind_ugh.wav");
+  mastermindUghSoundbite.volume = 0.5;
+  mastermindUghSoundbite.play();
+};
+const youWereMasterful = function () {
+  const youWereMasterfulSoundbite = new Audio(
+    "../soundbites/you_were_masterful.wav"
+  );
+  youWereMasterfulSoundbite.volume = 0.5;
+  youWereMasterfulSoundbite.play();
+};
+const iUsedToWin = function () {
+  const iUsedToWinSoundbite = new Audio("../soundbites/i_used_to_win.wav");
+  iUsedToWinSoundbite.volume = 0.5;
+  iUsedToWinSoundbite.play();
+};
+const mastermindGames = function () {
+  const mastermindGamesSoundbite = new Audio(
+    "../soundbites/mastermind_games_of.wav"
+  );
+  mastermindGamesSoundbite.volume = 0.5;
+  mastermindGamesSoundbite.play();
 };
 /*----------- Event Listeners ----------*/
 colourSelector.forEach((button) => {
@@ -188,6 +239,18 @@ checkBtn.addEventListener("click", giveFeedback);
 hamMenu.addEventListener("click", () => {
   hamMenu.classList.toggle("active");
   offScreenMenu.classList.toggle("active");
+  ahMastermind();
+});
+darkMode.addEventListener("click", () => {
+  modeToggle.classList.toggle("mode");
+  mastermindUgh();
+});
+instructions.addEventListener("click", () => {
+  showInstructions.classList.toggle("show");
+  mastermindGames();
+});
+exitBtn.addEventListener("click", () => {
+  showInstructions.classList.toggle("show");
 });
 
 init();

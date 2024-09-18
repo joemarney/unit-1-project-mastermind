@@ -8,14 +8,17 @@
   margin: 0;
 }
 
-html,
-body {
+.background {
   font-family: "Gloria Hallelujah";
-  background-color: #acbea3;
 }
+
+.mode {
+  background-color: #1e1e1e;
+  color: #998fc7;
+}
+
 .off-screen-menu {
-  background-color: #4a4063;
-  height: 100vh;
+  height: 25vh;
   width: 100%;
   max-width: 200px;
   position: fixed;
@@ -29,14 +32,16 @@ body {
   font-size: 25px;
   transition: 0.3s ease;
 }
+
 .off-screen-menu.active {
   right: 0;
 }
+
 nav {
   padding: 5px;
   display: flex;
-  background-color: #4a4063;
 }
+
 .ham-menu {
   height: 30px;
   width: 30px;
@@ -44,10 +49,11 @@ nav {
   position: relative;
   cursor: pointer;
 }
+
 .ham-menu span {
   height: 5px;
   width: 100%;
-  background-color: #998fc7;
+  background-color: #4a4063;
   border-radius: 25px;
   position: absolute;
   top: 50%;
@@ -55,19 +61,24 @@ nav {
   transform: translate(-50%, -50%);
   transition: 0.3s ease;
 }
+
 .ham-menu span:nth-child(1) {
   top: 25%;
 }
+
 .ham-menu span:nth-child(3) {
   top: 75%;
 }
+
 .ham-menu.active span:nth-child(1) {
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
 }
+
 .ham-menu.active span:nth-child(2) {
   opacity: 0;
 }
+
 .ham-menu.active span:nth-child(3) {
   top: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
@@ -79,7 +90,46 @@ nav {
   font-family: "Gloria Hallelujah";
   cursor: pointer;
 }
-.dark {
+
+#instructionsPage {
+  position: absolute;
+  width: 520px;
+  height: 670px;
+  left: calc(50% - 550px / 2 - 0.5px);
+  top: calc(50% - 600px / 2 + 0.5px);
+  background: #4a4063;
+  border: 5px solid #000000;
+  border-radius: 50px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.instructions {
+  color: white;
+  font-size: 20px;
+}
+
+.show {
+  visibility: hidden;
+}
+
+.exit {
+  position: absolute;
+  top: 5px;
+  left: 450px;
+  float: right;
+  background-color: #998fc7;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-family: "Gloria Hallelujah";
+  cursor: pointer;
+}
+
+#dark {
   background-color: #998fc7;
   border: 3px solid black;
   border-radius: 10px;
@@ -89,6 +139,7 @@ nav {
 
 .message {
   text-align: center;
+  color: #000000;
 }
 
 .game-area {
@@ -129,6 +180,7 @@ nav {
   background-color: #998fc7;
   border: 3px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .guesses {
