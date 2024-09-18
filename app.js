@@ -20,13 +20,13 @@ const checkBtn = document.querySelector(".check");
 const resultMsg = document.querySelector(".message");
 const hamMenu = document.querySelector(".ham-menu");
 const offScreenMenu = document.querySelector(".off-screen-menu");
-const darkMode = document.querySelector("#dark");
+const themeBtn = document.querySelector("#dark");
 const instructions = document.querySelector(".how-to");
 const navBar = document.querySelector(".nav-bar");
 const backGround = document.querySelector(".background");
 const exitBtn = document.querySelector(".exit");
 const showInstructions = document.querySelector("#instructionsPage");
-const modeToggle = document.querySelector(".mode");
+const modeToggle = document.querySelectorAll(".mode");
 
 const secretCode = document.querySelectorAll(
   "#secret1, #secret2, #secret3, #secret4"
@@ -240,10 +240,6 @@ hamMenu.addEventListener("click", () => {
   hamMenu.classList.toggle("active");
   offScreenMenu.classList.toggle("active");
   ahMastermind();
-});
-darkMode.addEventListener("click", () => {
-  modeToggle.classList.toggle("mode");
-  mastermindUgh();
 });
 instructions.addEventListener("click", () => {
   showInstructions.classList.toggle("show");
