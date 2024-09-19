@@ -23,7 +23,6 @@ const offScreenMenu = document.querySelector(".off-screen-menu");
 const themeBtn = document.querySelector("#light");
 const instructions = document.querySelector(".how-to");
 const navBar = document.querySelector(".nav-bar");
-const backGround = document.querySelector(".background");
 const exitBtn = document.querySelector(".exit");
 const showInstructions = document.querySelector("#instructionsPage");
 const modeToggle = document.querySelectorAll(".mode");
@@ -168,10 +167,6 @@ const giveFeedback = function () {
   } else {
     loser();
   }
-
-  console.log("Guess Colors: ", guessColours);
-  console.log("Mystery Colors: ", mystery);
-  console.log("Result: ", result);
 };
 
 const winner = function () {
@@ -231,6 +226,18 @@ const mastermindGames = function () {
   mastermindGamesSoundbite.volume = 0.5;
   mastermindGamesSoundbite.play();
 };
+
+const changeThemeBtn = function () {
+  if (themeBtn.innerText == "LIGHT MODE") {
+    themeBtn.innerText = "DARK MODE";
+  } else {
+    themeBtn.innerText = "LIGHT MODE";
+  }
+  for (let i = 0; i < modeToggle.length; i++) {
+    modeToggle[i].classList.toggle("mode");
+  }
+  mastermindUgh();
+};
 /*----------- Event Listeners ----------*/
 colourSelector.forEach((button) => {
   button.addEventListener("click", changeColour);
@@ -248,5 +255,7 @@ instructions.addEventListener("click", () => {
 exitBtn.addEventListener("click", () => {
   showInstructions.classList.toggle("show");
 });
+
+themeBtn.addEventListener("click", changeThemeBtn);
 
 init();
