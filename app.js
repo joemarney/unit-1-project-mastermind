@@ -14,6 +14,7 @@ const colours = [
 let mystery = [];
 let currentTurn = 0;
 let timer;
+let timerActive = false;
 
 /*----- Cached Element References  -----*/
 const colourSelector = document.querySelectorAll(".colour");
@@ -66,6 +67,10 @@ const init = function () {
   checkBtn.textContent = "CHECK";
   checkBtn.removeEventListener("click", init);
   checkBtn.addEventListener("click", giveFeedback);
+  if (timerActive) {
+    clearInterval(timer);
+    countdownTimer();
+  }
 };
 
 const countdownTimer = function () {
@@ -178,7 +183,7 @@ const giveFeedback = function () {
 
   if (correctGuesses === mystery.length) {
     winner();
-    clearInterval(timer);
+    // clearInterval(timer);
   } else if (currentTurn < turns.length - 1) {
     disablePlayerTurn(currentTurn);
     currentTurn++;
@@ -190,7 +195,7 @@ const giveFeedback = function () {
     });
   } else {
     loser();
-    clearInterval(timer);
+    // clearInterval(timer);
   }
 };
 
@@ -278,5 +283,13 @@ exitBtn.addEventListener("click", () => {
 
 themeBtn.addEventListener("click", changeThemeBtn);
 
-timerBtn.addEventListener("click", countdownTimer);
+timerBtn.addEventListener("click", () => {
+  timerActive = !timerActive;
+  if (timerActive) {
+    countdownTimer();
+  } else {
+    clearInterval(timer);
+    timeLeft.textContent = "";
+  }
+});
 init();
