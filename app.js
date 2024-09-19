@@ -183,7 +183,6 @@ const giveFeedback = function () {
 
   if (correctGuesses === mystery.length) {
     winner();
-    // clearInterval(timer);
   } else if (currentTurn < turns.length - 1) {
     disablePlayerTurn(currentTurn);
     currentTurn++;
@@ -195,7 +194,6 @@ const giveFeedback = function () {
     });
   } else {
     loser();
-    // clearInterval(timer);
   }
 };
 
