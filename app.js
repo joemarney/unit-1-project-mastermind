@@ -13,6 +13,7 @@ const colours = [
 /*---------- Variables (state) ---------*/
 let mystery = [];
 let currentTurn = 0;
+let timer;
 
 /*----- Cached Element References  -----*/
 const colourSelector = document.querySelectorAll(".colour");
@@ -26,6 +27,8 @@ const navBar = document.querySelector(".nav-bar");
 const exitBtn = document.querySelector(".exit");
 const showInstructions = document.querySelector("#instructionsPage");
 const modeToggle = document.querySelectorAll(".mode");
+const timerBtn = document.querySelector(".add-timer");
+const timeLeft = document.querySelector("#time");
 
 const secretCode = document.querySelectorAll(
   "#secret1, #secret2, #secret3, #secret4"
@@ -54,13 +57,32 @@ const feedback = [
 /*-------------- Functions -------------*/
 const init = function () {
   currentTurn = 0;
+  correctGuesses = 0;
+  mystery = [];
+  resetColours();
   getSecretCode();
   playerTurns(currentTurn);
   resultMsg.textContent = "MASTERMIND";
   checkBtn.textContent = "CHECK";
   checkBtn.removeEventListener("click", init);
   checkBtn.addEventListener("click", giveFeedback);
-  resetColours();
+};
+
+const countdownTimer = function () {
+  let count = 60;
+  timeLeft.textContent = count;
+  timer = setInterval(function () {
+    count--;
+    if (count > 0) {
+      timeLeft.textContent = count;
+    } else {
+      clearInterval(timer);
+      timeLeft.textContent = "0.";
+    }
+    if (count === 0) {
+      loser();
+    }
+  }, 1000);
 };
 
 const resetColours = function () {
@@ -100,6 +122,7 @@ const changeColour = function (event) {
     }
   }
 };
+
 const playerTurns = function (turnIndex) {
   turns[turnIndex].forEach((guess) => {
     guess.addEventListener("click", function () {
@@ -155,6 +178,7 @@ const giveFeedback = function () {
 
   if (correctGuesses === mystery.length) {
     winner();
+    clearInterval(timer);
   } else if (currentTurn < turns.length - 1) {
     disablePlayerTurn(currentTurn);
     currentTurn++;
@@ -166,64 +190,60 @@ const giveFeedback = function () {
     });
   } else {
     loser();
+    clearInterval(timer);
   }
 };
 
 const winner = function () {
   resultMsg.textContent = "GOOD JOB, YOU CRACKED THE CODE.";
   checkBtn.textContent = "RESET";
+  clearInterval(timer);
   checkBtn.removeEventListener("click", giveFeedback);
-  checkBtn.addEventListener("click", () => {
-    okayReady();
-    init();
-  });
+  checkBtn.addEventListener("click", init);
   youWereMasterful();
 };
 
 const loser = function () {
   resultMsg.textContent = "BETTER LUCK NEXT TIME.";
   checkBtn.textContent = "RETRY";
+  clearInterval(timer);
   checkBtn.removeEventListener("click", giveFeedback);
-  checkBtn.addEventListener("click", () => {
-    okayReady();
-    init();
-  });
+  checkBtn.addEventListener("click", init);
   iUsedToWin();
 };
 
 const okayReady = function () {
   const okayReadySoundbite = new Audio("../soundbites/okay_ready.wav");
-  okayReadySoundbite.volume = 0.5;
+  okayReadySoundbite.volume = 0.3;
   okayReadySoundbite.play();
 };
-
 const ahMastermind = function () {
   const ahMastermindSoundbite = new Audio("../soundbites/ah_mastermind.wav");
-  ahMastermindSoundbite.volume = 0.5;
+  ahMastermindSoundbite.volume = 0.3;
   ahMastermindSoundbite.play();
 };
 const mastermindUgh = function () {
   const mastermindUghSoundbite = new Audio("../soundbites/mastermind_ugh.wav");
-  mastermindUghSoundbite.volume = 0.5;
+  mastermindUghSoundbite.volume = 0.3;
   mastermindUghSoundbite.play();
 };
 const youWereMasterful = function () {
   const youWereMasterfulSoundbite = new Audio(
     "../soundbites/you_were_masterful.wav"
   );
-  youWereMasterfulSoundbite.volume = 0.5;
+  youWereMasterfulSoundbite.volume = 0.3;
   youWereMasterfulSoundbite.play();
 };
 const iUsedToWin = function () {
   const iUsedToWinSoundbite = new Audio("../soundbites/i_used_to_win.wav");
-  iUsedToWinSoundbite.volume = 0.5;
+  iUsedToWinSoundbite.volume = 0.3;
   iUsedToWinSoundbite.play();
 };
 const mastermindGames = function () {
   const mastermindGamesSoundbite = new Audio(
     "../soundbites/mastermind_games_of.wav"
   );
-  mastermindGamesSoundbite.volume = 0.5;
+  mastermindGamesSoundbite.volume = 0.3;
   mastermindGamesSoundbite.play();
 };
 
@@ -258,4 +278,5 @@ exitBtn.addEventListener("click", () => {
 
 themeBtn.addEventListener("click", changeThemeBtn);
 
+timerBtn.addEventListener("click", countdownTimer);
 init();

@@ -113,7 +113,8 @@ nav {
 
 .instructions {
   color: gainsboro;
-  font-size: 20px;
+  font-size: 17px;
+  padding: 50px;
 }
 
 .show {
@@ -139,7 +140,18 @@ nav {
   font-family: "Gloria Hallelujah";
   cursor: pointer;
 }
-
+.add-timer {
+  background-color: #998fc7;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-family: "Gloria Hallelujah";
+  cursor: pointer;
+}
+#time {
+  position: absolute;
+  font-size: 30px;
+  margin: 90px;
+}
 .message {
   text-align: center;
 }
