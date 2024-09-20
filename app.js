@@ -196,7 +196,6 @@ const giveFeedback = function () {
     loser();
   }
 };
-
 const winner = function () {
   resultMsg.textContent = "GOOD JOB, YOU CRACKED THE CODE.";
   checkBtn.textContent = "RESET";
@@ -289,5 +288,6 @@ timerBtn.addEventListener("click", () => {
     clearInterval(timer);
     timeLeft.textContent = "";
   }
+  okayReady();
 });
 init();
