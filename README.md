@@ -1,6 +1,6 @@
 # Project 1: Mastermind Game
 
-![mastermind browser game with a dark theme](../unit-1-project-mastermind/MVP.png)
+![mastermind browser game with a dark theme](./MVP.png)
 
 > Mastermind was created in 1970 by Mordecai Meirowitz in Israel. It resembles an old pencil and paper game called Bulls and Cows which may date back a century.
 

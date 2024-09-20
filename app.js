@@ -215,35 +215,35 @@ const loser = function () {
 };
 
 const okayReady = function () {
-  const okayReadySoundbite = new Audio("../soundbites/okay_ready.wav");
+  const okayReadySoundbite = new Audio("./soundbites/okay_ready.wav");
   okayReadySoundbite.volume = 0.3;
   okayReadySoundbite.play();
 };
 const ahMastermind = function () {
-  const ahMastermindSoundbite = new Audio("../soundbites/ah_mastermind.wav");
+  const ahMastermindSoundbite = new Audio("./soundbites/ah_mastermind.wav");
   ahMastermindSoundbite.volume = 0.3;
   ahMastermindSoundbite.play();
 };
 const mastermindUgh = function () {
-  const mastermindUghSoundbite = new Audio("../soundbites/mastermind_ugh.wav");
+  const mastermindUghSoundbite = new Audio("./soundbites/mastermind_ugh.wav");
   mastermindUghSoundbite.volume = 0.3;
   mastermindUghSoundbite.play();
 };
 const youWereMasterful = function () {
   const youWereMasterfulSoundbite = new Audio(
-    "../soundbites/you_were_masterful.wav"
+    "./soundbites/you_were_masterful.wav"
   );
   youWereMasterfulSoundbite.volume = 0.3;
   youWereMasterfulSoundbite.play();
 };
 const iUsedToWin = function () {
-  const iUsedToWinSoundbite = new Audio("../soundbites/i_used_to_win.wav");
+  const iUsedToWinSoundbite = new Audio("./soundbites/i_used_to_win.wav");
   iUsedToWinSoundbite.volume = 0.3;
   iUsedToWinSoundbite.play();
 };
 const mastermindGames = function () {
   const mastermindGamesSoundbite = new Audio(
-    "../soundbites/mastermind_games_of.wav"
+    "./soundbites/mastermind_games_of.wav"
   );
   mastermindGamesSoundbite.volume = 0.3;
   mastermindGamesSoundbite.play();
