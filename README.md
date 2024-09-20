@@ -1,10 +1,10 @@
-# Mastermind Game
-
-### Mastermind was created in 1970 by Mordecai Meirowitz in Israel. It resembles an old pencil and paper game called Bulls and Cows which may date back a century.
+# Project 1: Mastermind Game
 
 ![mastermind browser game with a dark theme](../unit-1-project-mastermind/MVP.png)
 
-### Game and Instructions
+> Mastermind was created in 1970 by Mordecai Meirowitz in Israel. It resembles an old pencil and paper game called Bulls and Cows which may date back a century.
+
+# Game and Instructions
 
 _-link to game-_
 
@@ -15,7 +15,7 @@ _-link to game-_
   - Blank means the colour you guessed was not in the mystery code at all.
 - You have 8 turns to guess the correct code.
 
-### Accessing the Code
+# Accessing the Code
 
 To check out my code you can go to my [GitHub repo][link].
 
@@ -23,11 +23,11 @@ To check out my code you can go to my [GitHub repo][link].
 
 You can either use the inbuilt code viewer or you can download the zip to see it in your preferred code editor.
 
-### Timeframe
+# Timeframe
 
 We as a class had a week to complete this task. We have been mainly working independently. We have been helping each other when needed.
 
-### Technologies Used
+# Technologies Used
 
 - Figma
 - JavaScript
@@ -38,15 +38,15 @@ We as a class had a week to complete this task. We have been mainly working inde
 - GitHub
 - Chrome Dev Tools
 
-### Brief
+# Brief
 
-### Planning
+# Planning
 
 I planned my project using Figma. This allowed me to really visualise my project from day one. Once I had started the coding portion I had realised that my plan was fairly ambitious for my level of JS knowledge.
 
-#### User Stories
+## User Stories
 
-##### These are declarations that aid the design of the application by clearly stating what is required.
+#### These are declarations that aid the design of the application by clearly stating what is required.
 
 - **As a user,** I want the application to be aesthetically pleasing, clean and clear from an accessibility standpoint.
 - **As a user,** I want to see a title screen when I arrive so I know I'm on the right page.
@@ -57,9 +57,9 @@ I planned my project using Figma. This allowed me to really visualise my project
 - **As a user,** I want to be able to see when the game is over.
 - **As a user,** I want the option to play again.
 
-#### Pseudocode
+## Pseudocode
 
-##### This is notation resembling a simplified programming language. It helps better understand how the application functions.
+#### This is notation resembling a simplified programming language. It helps better understand how the application functions.
 
 1. Define variables to track the state of the game:
 
@@ -92,7 +92,7 @@ I planned my project using Figma. This allowed me to really visualise my project
 
 7. Render a win/loss message to the player.
 
-#### Stretch Goals
+# Stretch Goals
 
 At the start of my project I set some stretch goals. I managed to complete 2 of them and implement them within the timeframe.
 Along with the goals I did not reach I thought of some more while working:
@@ -101,7 +101,7 @@ Along with the goals I did not reach I thought of some more while working:
 - I like to earn achievements in games that I play so I think achievements would be cool to add.
 - I think it would be good to make the game mobile friendly too as that is where most people would play a game like this.
 
-### Attributions
+# Attributions
 
 - Chat GPT
 - Stack Overflow
